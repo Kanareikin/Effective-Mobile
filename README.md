@@ -37,3 +37,5 @@ journalctl -u monitor-test-process.service -n 20 --no-pager
 # Проверить лог-файл
 sudo tail -f /var/log/monitoring/monitoring.log
 
+Так как большого опыта в написании баш скриптов не имею, воспользовался ИИ Qwen.
+
