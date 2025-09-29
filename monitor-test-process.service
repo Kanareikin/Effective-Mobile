@@ -1,0 +1,23 @@
+[Unit]
+Description=Monitor 'test' process and report to monitoring API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/monitor-test-process.sh
+User=monitor-test
+Group=monitor-test
+# Ограничиваем права (best practice)
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/log/monitoring /var/lib/monitor-test
+# Запрещаем доступ к сети кроме необходимого (опционально, но сложно — оставим без)
+# Если нужно — можно использовать RestrictAddressFamilies, но это требует тестирования
+
+# Логирование в systemd journal (дополнительно к файлу)
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=monitor-test-process

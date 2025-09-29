@@ -1,0 +1,13 @@
+[Unit]
+Description=Run monitor-test-process every minute
+
+[Timer]
+# Запускать сразу после активации таймера
+OnBootSec=1min
+# Запускать каждую минуту после этого
+OnUnitActiveSec=1min
+# Точность по умолчанию — 1 минута, но можно уточнить:
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target
